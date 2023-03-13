@@ -33,6 +33,18 @@ class Persons(object):
     def get_person_fields(self, params=None, **kwargs):
         url = "personFields"
         return self._client._get(self._client.BASE_URL + url, params=params, **kwargs)
+    
+    def add_person_field(self, data, **kwargs):
+        url = "personFields"
+        return self._client._post(self._client.BASE_URL + url, json=data, **kwargs)
+    
+    def update_person_field(self, person_field_id, data, **kwargs):
+        url = "personFields/{}".format(person_field_id)
+        return self._client._put(self._client.BASE_URL + url, json=data, **kwargs)
+    
+    def delete_person_field(self, person_field_id, **kwargs):
+        url = "personFields/{}".format(person_field_id)
+        return self._client._delete(self._client.BASE_URL + url, **kwargs)
 
     def get_person_activities(self, person_id, **kwargs):
         url = "persons/{}/activities".format(person_id)
